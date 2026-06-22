@@ -27,21 +27,18 @@ export default function ProtectedAnswerCopyViewer({ documentId, title }) {
       setError("");
       try {
         const token = await user.getIdToken();
-        const response = await fetch(`/api/bpsc/documents/${documentId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-          cache: "no-store",
-        });
-        const payload = await response.json();
-        if (!response.ok) throw new Error(payload.error || "Unable to open document.");
-        setWatermark(payload.watermark);
-
         const pdfjs = await import("pdfjs-dist");
         pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
-        loadingTask = pdfjs.getDocument({ url: payload.signedUrl });
+        setWatermark(`${user.email || "authenticated-user"} • ${user.uid.slice(0, 8)}`);
+        loadingTask = pdfjs.getDocument({
+          url: `/api/bpsc/documents/${documentId}`,
+          httpHeaders: { Authorization: `Bearer ${token}` },
+          withCredentials: false,
+        });
         const loadedPdf = await loadingTask.promise;
         if (!cancelled) setPdf(loadedPdf);
       } catch (loadError) {
-        if (!cancelled) setError(`${loadError.message || "Unable to render PDF"} If the signed request succeeds but rendering fails, configure R2 CORS for this website origin.`);
+        if (!cancelled) setError(loadError.message || "Unable to render PDF.");
       } finally {
         if (!cancelled) setLoading(false);
       }

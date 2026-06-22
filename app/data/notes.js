@@ -35,7 +35,7 @@ const upscNotes = [
       "bhakti-movement",
       "indian-monsoon"
     ],
-    "comingSoon": true
+    "comingSoon": false
   },
   {
     "id": "vedic-age",

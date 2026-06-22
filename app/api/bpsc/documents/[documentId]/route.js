@@ -1,5 +1,4 @@
 import { GetObjectCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { ANSWER_COPY_PREFIX, BPSC_NOTES_PREFIX, getR2Client, getR2Config } from "@/lib/r2";
 import { verifyFirebaseRequest } from "@/lib/verifyFirebaseToken";
 
@@ -14,20 +13,31 @@ function decodeDocumentId(documentId) {
 
 export async function GET(request, { params }) {
   try {
-    const user = await verifyFirebaseRequest(request);
+    await verifyFirebaseRequest(request);
     const { documentId } = await params;
     const key = decodeDocumentId(documentId);
     const client = getR2Client();
     const { bucket } = getR2Config();
-    const signedUrl = await getSignedUrl(client, new GetObjectCommand({
+    const range = request.headers.get("range") || undefined;
+    const object = await client.send(new GetObjectCommand({
       Bucket: bucket,
       Key: key,
-      ResponseContentType: "application/pdf",
-      ResponseContentDisposition: "inline",
-    }), { expiresIn: 60 });
+      Range: range,
+    }));
+    const headers = new Headers({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": "inline",
+      "Cache-Control": "private, no-store, max-age=0",
+      "Accept-Ranges": "bytes",
+      "X-Content-Type-Options": "nosniff",
+    });
+    if (object.ContentLength != null) headers.set("Content-Length", String(object.ContentLength));
+    if (object.ContentRange) headers.set("Content-Range", object.ContentRange);
+    if (object.ETag) headers.set("ETag", object.ETag);
 
-    return Response.json({ signedUrl, expiresIn: 60, watermark: `${user.email || "authenticated-user"} • ${user.sub.slice(0, 8)}` }, {
-      headers: { "Cache-Control": "private, no-store, max-age=0" },
+    return new Response(object.Body.transformToWebStream(), {
+      status: object.ContentRange ? 206 : 200,
+      headers,
     });
   } catch (error) {
     const unauthorized = error.message?.toLowerCase().includes("auth") || error.code === "ERR_JWT_EXPIRED";
