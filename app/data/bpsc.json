@@ -1,0 +1,114 @@
+{
+  "notes": [
+    {
+      "id": "bpsc-bihar-history",
+      "title": "History of Bihar & Freedom Movement",
+      "subject": "Prelims",
+      "paper": "BPSC Prelims GS",
+      "description": "Ancient, medieval and modern Bihar with focused coverage of the freedom movement."
+    },
+    {
+      "id": "bpsc-bihar-geography",
+      "title": "Geography & Physical Features of Bihar",
+      "subject": "Prelims",
+      "paper": "BPSC Prelims GS",
+      "description": "Physiography, drainage, climate, soils, forests and recurring natural hazards."
+    },
+    {
+      "id": "bpsc-bihar-economy",
+      "title": "Economy of Bihar & Economic Survey",
+      "subject": "Prelims",
+      "paper": "BPSC Prelims GS",
+      "description": "Agriculture, infrastructure, industry and a framework for updating survey and budget data."
+    },
+    {
+      "id": "bpsc-bihar-polity",
+      "title": "Polity & Local Governance in Bihar",
+      "subject": "Prelims",
+      "paper": "BPSC Prelims GS",
+      "description": "State institutions, Panchayati Raj, urban bodies and Bihar-focused governance schemes."
+    },
+    {
+      "id": "bpsc-mains-gs-1",
+      "title": "GS Paper 1: History, Culture & Statistics",
+      "subject": "Mains",
+      "paper": "BPSC Mains GS 1",
+      "description": "Answer-ready themes covering Bihar's culture, history and statistical analysis."
+    },
+    {
+      "id": "bpsc-mains-gs-2",
+      "title": "GS Paper 2: Polity, Economy & Science",
+      "subject": "Mains",
+      "paper": "BPSC Mains GS 2",
+      "description": "Governance, development constraints and science applications in Bihar."
+    },
+    {
+      "id": "bpsc-prelims-pyq",
+      "title": "BPSC Prelims Solved Papers (60th - 69th CCE)",
+      "subject": "PYQ",
+      "paper": "BPSC Prelims PYQ",
+      "description": "A topic-wise practice framework for previous objective papers and explanations."
+    },
+    {
+      "id": "bpsc-mains-pyq",
+      "title": "BPSC Mains Answer-Writing Frameworks",
+      "subject": "PYQ",
+      "paper": "BPSC Mains PYQ",
+      "description": "Question decoding, answer structure and self-evaluation for GS papers."
+    }
+  ],
+  "copies": {
+    "actual": [
+      {
+        "title": "Essay",
+        "fileName": "Essay unchecked.pdf",
+        "objectKey": "bpsc/answer_copy/Essay unchecked.pdf",
+        "kind": "real"
+      },
+      {
+        "title": "GS 1",
+        "fileName": "Gs 1 unchecked.pdf",
+        "objectKey": "bpsc/answer_copy/Gs 1 unchecked.pdf",
+        "kind": "real"
+      },
+      {
+        "title": "GS 2",
+        "fileName": "Gs 2 unchecked.pdf",
+        "objectKey": "bpsc/answer_copy/Gs 2 unchecked.pdf",
+        "kind": "real"
+      }
+    ],
+    "practice": [
+      {
+        "title": "Essay",
+        "fileName": "Essay.pdf",
+        "objectKey": "bpsc/answer_copy/Essay.pdf",
+        "kind": "practice"
+      },
+      {
+        "title": "GS 1 Set 1",
+        "fileName": "Gs 1 set 1.pdf",
+        "objectKey": "bpsc/answer_copy/Gs 1 set 1.pdf",
+        "kind": "practice"
+      },
+      {
+        "title": "GS 1 Set 2",
+        "fileName": "Gs 1 set 2.pdf",
+        "objectKey": "bpsc/answer_copy/Gs 1 set 2.pdf",
+        "kind": "practice"
+      },
+      {
+        "title": "GS 2 Set 1",
+        "fileName": "Gs 2 set 1.pdf",
+        "objectKey": "bpsc/answer_copy/Gs 2 set 1.pdf",
+        "kind": "practice"
+      },
+      {
+        "title": "GS 2 Set 2",
+        "fileName": "Gs 2 set 2.pdf",
+        "objectKey": "bpsc/answer_copy/Gs 2 set 2.pdf",
+        "kind": "practice"
+      }
+    ]
+  }
+}

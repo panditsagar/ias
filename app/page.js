@@ -216,8 +216,7 @@ export default function Home() {
 
         {/* Why these UPSC Notes */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden">
-          {/* Notebook line decoration */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 border-r-2 notebook-margin" />
+          
           
           <div className="lg:col-span-5 space-y-4 pr-4">
             <div className="inline-flex items-center space-x-1.5 bg-amber-500/10 text-amber-800 border border-amber-200/30 px-3 py-1 rounded-full text-xs font-semibold">

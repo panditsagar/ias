@@ -14,9 +14,9 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center active:scale-[0.98] transition-transform w-fit">
               <img 
-                src="/logo.webp" 
+                src="/logo.png" 
                 alt="Ishteyaque Rahman" 
-                className="h-10 w-auto object-contain brightness-0 invert opacity-90 transition-transform duration-200 hover:scale-[1.02]"
+                className="h-10 w-auto object-contain   opacity-90 transition-transform duration-200 hover:scale-[1.02]"
               />
             </Link>
             <p className="text-slate-400 text-sm max-w-sm leading-relaxed font-light">
@@ -41,6 +41,9 @@ export default function Footer() {
                 <Link href="/psir-optional" className="text-slate-400 hover:text-amber-500 transition-colors duration-150">PSIR Optional</Link>
               </li>
               <li>
+                <Link href="/bpsc" className="text-slate-400 hover:text-amber-500 transition-colors duration-150">BPSC Materials</Link>
+              </li>
+              <li>
                 <Link href="/pyq" className="text-slate-400 hover:text-amber-500 transition-colors duration-150">PYQ Analysis</Link>
               </li>
             </ul>
@@ -57,7 +60,7 @@ export default function Footer() {
                 <Link href="/about" className="text-slate-400 hover:text-amber-500 transition-colors duration-150">About the Creator</Link>
               </li>
               <li>
-                <Link href="/about#disclaimer" className="text-slate-400 hover:text-amber-500 transition-colors duration-150">Disclaimer</Link>
+                <Link href="/disclaimer" className="text-slate-400 hover:text-amber-500 transition-colors duration-150">Disclaimer</Link>
               </li>
               <li>
                 <Link href="/pyq#topic-wise" className="text-slate-400 hover:text-amber-500 transition-colors duration-150">Topic-wise PYQs</Link>
@@ -106,9 +109,11 @@ export default function Footer() {
           <div>
             &copy; {currentYear} Ishteyaque Rahman. All rights reserved.
           </div>
-          <div className="flex space-x-6 text-slate-500">
-            <span>By aspirants, for aspirants.</span>
-            <span>Designed for repeated revision.</span>
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-slate-500">
+            <Link href="/privacy-policy" className="hover:text-slate-300">Privacy Policy</Link>
+            <Link href="/terms-and-conditions" className="hover:text-slate-300">Terms and Conditions</Link>
+            <Link href="/disclaimer" className="hover:text-slate-300">Disclaimer</Link>
+            <Link href="/refund-and-cancellation-policy" className="hover:text-slate-300">Refund and Cancellation</Link>
           </div>
         </div>
       </div>

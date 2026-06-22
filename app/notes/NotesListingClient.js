@@ -213,7 +213,7 @@ export default function NotesListingClient({ allNotes }) {
                 onClick={() => handleCategoryChange("")}
                 className={`w-full text-left text-sm py-2 px-3 rounded-xl transition-all cursor-pointer flex items-center active:scale-[0.98] ${
                   selectedCategory === ""
-                    ? "bg-amber-500/10 text-amber-900 font-semibold border-l-2 border-amber-600"
+                    ? "bg-amber-500/10 text-amber-900 font-semibold"
                     : "text-slate-605 hover:bg-slate-50"
                 }`}
               >
@@ -225,7 +225,7 @@ export default function NotesListingClient({ allNotes }) {
                   onClick={() => handleCategoryChange(cat)}
                   className={`w-full text-left text-sm py-2 px-3 rounded-xl transition-all cursor-pointer flex items-center active:scale-[0.98] ${
                     selectedCategory === cat
-                      ? "bg-amber-500/10 text-amber-900 font-semibold border-l-2 border-amber-600"
+                      ? "bg-amber-500/10 text-amber-900 font-semibold"
                       : "text-slate-605 hover:bg-slate-50"
                   }`}
                 >
@@ -243,7 +243,7 @@ export default function NotesListingClient({ allNotes }) {
                 onClick={() => handlePaperChange("")}
                 className={`w-full text-left text-sm py-2 px-3 rounded-xl transition-all cursor-pointer flex items-center active:scale-[0.98] ${
                   selectedPaper === ""
-                    ? "bg-amber-500/10 text-amber-900 font-semibold border-l-2 border-amber-600"
+                    ? "bg-amber-500/10 text-amber-900 font-semibold"
                     : "text-slate-605 hover:bg-slate-50"
                 }`}
               >
@@ -255,7 +255,7 @@ export default function NotesListingClient({ allNotes }) {
                   onClick={() => handlePaperChange(paper)}
                   className={`w-full text-left text-sm py-2 px-3 rounded-xl transition-all cursor-pointer flex items-center active:scale-[0.98] ${
                     selectedPaper === paper
-                      ? "bg-amber-500/10 text-amber-900 font-semibold border-l-2 border-amber-600"
+                      ? "bg-amber-500/10 text-amber-900 font-semibold"
                       : "text-slate-605 hover:bg-slate-50"
                   }`}
                 >
@@ -273,7 +273,7 @@ export default function NotesListingClient({ allNotes }) {
                 onClick={() => handleSubjectChange("")}
                 className={`w-full text-left text-sm py-2 px-3 rounded-xl transition-all cursor-pointer flex items-center active:scale-[0.98] ${
                   selectedSubject === ""
-                    ? "bg-amber-500/10 text-amber-900 font-semibold border-l-2 border-amber-600"
+                    ? "bg-amber-500/10 text-amber-900 font-semibold"
                     : "text-slate-605 hover:bg-slate-50"
                 }`}
               >
@@ -285,7 +285,7 @@ export default function NotesListingClient({ allNotes }) {
                   onClick={() => handleSubjectChange(sub)}
                   className={`w-full text-left text-sm py-2 px-3 rounded-xl transition-all cursor-pointer flex items-center active:scale-[0.98] ${
                     selectedSubject.toLowerCase() === sub.toLowerCase()
-                      ? "bg-amber-500/10 text-amber-900 font-semibold border-l-2 border-amber-600"
+                      ? "bg-amber-500/10 text-amber-900 font-semibold"
                       : "text-slate-650 hover:bg-slate-50"
                   }`}
                   title={sub}

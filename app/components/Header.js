@@ -3,11 +3,35 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, List, X, CaretDown, MagnifyingGlass, ArrowRight } from "@phosphor-icons/react";
+import { List, X, CaretDown, MagnifyingGlass, ArrowRight, SignOut } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "../context/AuthContext";
+
+function ProfileAvatar({ user, size = "h-12 w-12" }) {
+  const initials = (user.displayName || user.email || "U")
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  if (user.photoURL) {
+    return (
+      <span
+        role="img"
+        aria-label={user.displayName || "Profile photo"}
+        className={`${size} shrink-0 rounded-full bg-cover bg-center ring-2 ring-white shadow-sm`}
+        style={{ backgroundImage: `url("${user.photoURL}")` }}
+      />
+    );
+  }
+
+  return <span className={`${size} flex shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-bold text-amber-800 ring-2 ring-white shadow-sm`}>{initials}</span>;
+}
 
 export default function Header() {
   const pathname = usePathname();
+  const { user, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // 'prelims' | 'mains' | 'psir' | null
   const dropdownRef = useRef(null);
@@ -64,7 +88,7 @@ export default function Header() {
       ],
     },
     {
-      name: "PSIR Optional",
+      name: "PSIR",
       href: "/psir-optional",
       dropdown: [
         { name: "Paper 1 Sec A", href: "/notes?category=PSIR+Optional&subject=Paper+1+Section+A", desc: "Political Theory & Thinkers" },
@@ -73,8 +97,9 @@ export default function Header() {
         { name: "Paper 2 Sec B", href: "/notes?category=PSIR+Optional&subject=Paper+2+Section+B", desc: "India's Foreign Policy & Bilaterals" },
       ],
     },
+    { name: "BPSC", href: "/bpsc" },
     { name: "PYQ", href: "/pyq" },
-    { name: "About", href: "/about" },
+ 
   ];
 
   return (
@@ -85,9 +110,9 @@ export default function Header() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center group active:scale-[0.98] transition-transform duration-150">
               <img 
-                src="/logo.webp" 
+                src="/logo.png" 
                 alt="Ishteyaque Rahman" 
-                className="h-10 sm:h-20 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+                className="h-10 sm:h-16 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
               />
             </Link>
           </div>
@@ -177,16 +202,39 @@ export default function Header() {
                 </Link>
               );
             })}
+ 
 
-            <div className="pl-4 ml-4 border-l border-slate-200">
-              <Link
-                href="/notes"
-                className="p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-all block active:scale-90"
-                title="Search Notes"
-              >
-                <MagnifyingGlass className="h-5 w-5" weight="bold" />
-              </Link>
-            </div>
+            {user && (
+              <div className="relative ml-2">
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("profile")}
+                  aria-label="Open profile menu"
+                  aria-expanded={activeDropdown === "profile"}
+                  className="flex cursor-pointer items-center gap-1 rounded-full border border-slate-800 bg-white     transition hover:border-slate-300 hover:shadow"
+                >
+                  <ProfileAvatar user={user} />
+                 </button>
+
+                <AnimatePresence>
+                  {activeDropdown === "profile" && (
+                    <motion.div initial={{ opacity: 0, y: 8, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 6, scale: 0.97 }} className="absolute right-0 top-full mt-5 w-72 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_20px_50px_rgba(15,23,42,0.14)]">
+                      <div className="flex items-center gap-3 border-b border-slate-100 p-4">
+                        <ProfileAvatar user={user} size="h-11 w-11" />
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-bold text-slate-900">{user.displayName || "Student"}</p>
+                          <p className="truncate text-xs text-slate-500">{user.email}</p>
+                        </div>
+                      </div>
+                      <button type="button" onClick={logout} className="flex w-full cursor-pointer items-center gap-3 px-4 py-3.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-red-700">
+                        <SignOut className="h-4 w-4" weight="bold" />
+                        Sign out
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
           </nav>
 
           {/* Mobile Hamburger Trigger */}
@@ -197,6 +245,11 @@ export default function Header() {
             >
               <MagnifyingGlass className="h-5 w-5" weight="bold" />
             </Link>
+            {user && (
+              <button type="button" onClick={() => setMobileMenuOpen(true)} aria-label="Open profile" className="cursor-pointer rounded-full">
+                <ProfileAvatar user={user} size="h-8 w-8" />
+              </button>
+            )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-all active:scale-[0.93] cursor-pointer"
@@ -215,7 +268,7 @@ export default function Header() {
 
       {/* Mobile Menu Panel */}
       <div
-        className={`lg:hidden fixed top-0 right-0 bottom-0 w-80 max-w-full bg-[#FDFBF7] shadow-xl z-50 transform transition-transform duration-300 ease-in-out border-l border-slate-200 ${
+        className={`lg:hidden fixed top-0 right-0 bottom-0 w-80 max-w-full bg-[#FDFBF7] shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -256,7 +309,7 @@ export default function Header() {
                     </button>
                   </div>
                   {isDropdownOpen && (
-                    <div className="pl-4 py-1 border-l-2 border-amber-250/60 space-y-2.5 mt-2 animate-in slide-in-from-top-1 duration-150">
+                    <div className="pl-4 py-1 space-y-2.5 mt-2 animate-in slide-in-from-top-1 duration-150">
                       {link.dropdown.map((subItem) => (
                         <Link
                           key={subItem.name}
@@ -297,6 +350,29 @@ export default function Header() {
               <span>Search All Notes</span>
             </Link>
           </div>
+
+          {user && (
+            <div className="border-t border-slate-200 pt-5">
+              <div className="flex items-center gap-3 px-1">
+                <ProfileAvatar user={user} size="h-11 w-11" />
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-bold text-slate-900">{user.displayName || "Student"}</p>
+                  <p className="truncate text-xs text-slate-500">{user.email}</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  logout();
+                  setMobileMenuOpen(false);
+                }}
+                className="mt-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700"
+              >
+                <SignOut className="h-4 w-4" weight="bold" />
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>

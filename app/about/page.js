@@ -32,15 +32,14 @@ export default function About() {
           transition={springTransition}
           className="bg-white rounded-3xl border border-slate-200/80 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] p-8 sm:p-12 relative overflow-hidden"
         >
-          {/* Lined margin detail */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 border-r-2 notebook-margin" />
+          
           
           <div className="space-y-6">
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 tracking-tighter">
               About the Platform
             </h1>
             
-            <p className="font-serif text-base sm:text-lg text-slate-700 leading-relaxed italic border-l-4 border-amber-500/30 pl-4 py-1">
+            <p className="font-serif text-base sm:text-lg text-slate-700 leading-relaxed italic pl-4 py-1">
               "This personal UPSC notes archive is created to organize Prelims, Mains, PSIR Optional and PYQ content in a simple, structured and revision-friendly format. The goal is to make UPSC preparation less scattered and more focused."
             </p>
 

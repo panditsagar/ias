@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Lock, MagnifyingGlassPlus, MagnifyingGlassMinus, ArrowClockwise, CaretLeft, CaretRight, PushPin, FileText } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function NotesViewer({ note }) {
+export default function NotesViewer({ note, viewerLabel = "UPSC ONLINE VIEWER", examLabel = "UPSC" }) {
   const { title, category, subject, pages = [], keyTakeaways = [], relatedPYQs = [] } = note;
   
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -52,17 +52,10 @@ export default function NotesViewer({ note }) {
 
   return (
     <div className="space-y-6">
-      
-      {/* Warning Banner (strictly no emojis!) */}
-      <div className="flex items-center space-x-2.5 bg-amber-500/10 border border-amber-500/25 p-4 rounded-2xl text-xs sm:text-sm text-amber-800">
-        <Lock className="h-4 w-4 shrink-0 text-amber-700 font-bold" weight="bold" />
-        <span className="font-sans font-light">
-          <strong className="font-semibold text-amber-900">Security Notice:</strong> These notes are available for online reading only. PDF download and printing options are disabled to preserve content integrity.
-        </span>
-      </div>
+ 
 
       {/* Viewer Container */}
-      <div className="bg-slate-100 rounded-2xl border border-slate-205 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden">
+      <div className="bg-slate-100 rounded-2xl border border-slate-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden">
         
         {/* Document Viewer Control Bar */}
         <div className="bg-[#FDFBF7] border-b border-slate-200 px-4 py-3 flex flex-wrap items-center justify-between gap-3 select-none">
@@ -71,7 +64,7 @@ export default function NotesViewer({ note }) {
           <div className="flex items-center space-x-2 shrink-0">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span className="text-xs font-semibold text-slate-500 tracking-wider uppercase font-sans">
-              UPSC ONLINE VIEWER
+              {viewerLabel}
             </span>
           </div>
 
@@ -98,7 +91,7 @@ export default function NotesViewer({ note }) {
             </button>
             <button
               onClick={handleResetZoom}
-              className="p-1.5 rounded-lg hover:bg-white text-slate-400 hover:text-slate-700 transition-colors cursor-pointer border-l border-slate-200 active:scale-90"
+              className="p-1.5 rounded-lg hover:bg-white text-slate-400 hover:text-slate-700 transition-colors cursor-pointer active:scale-90"
               title="Reset Zoom"
             >
               <ArrowClockwise className="h-3.5 w-3.5" weight="bold" />
@@ -138,21 +131,18 @@ export default function NotesViewer({ note }) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.15 }}
-              className="relative w-full max-w-2xl bg-white border border-slate-300 shadow-lg rounded-sm aspect-[1/1.414] overflow-hidden p-8 sm:p-12 notebook-lines notebook-margin"
+              className="relative w-full max-w-2xl bg-white border border-slate-200 shadow-md rounded-md aspect-[1/1.414] overflow-hidden p-8 sm:p-12"
             >
               
-              {/* Red header margin rule line */}
-              <div className="absolute top-10 left-0 right-0 border-b border-rose-200/75 pointer-events-none" />
-
-              {/* Repeating Diagonally Rotated Watermark */}
+              {/* Repeating Diagonally Rotated Watermark (Subtle Slate Gray) */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-10 overflow-hidden">
-                <div className="text-rose-500/[0.04] text-5xl sm:text-6xl font-bold uppercase tracking-widest transform -rotate-30 select-none w-full text-center">
+                <div className="text-slate-900/[0.02] text-5xl sm:text-6xl font-bold uppercase tracking-widest transform -rotate-30 select-none w-full text-center">
                   Ishteyaque Rahman
                 </div>
               </div>
               
               <div className="absolute inset-0 flex items-end justify-center pb-24 pointer-events-none select-none z-10 overflow-hidden">
-                <div className="text-rose-500/[0.03] text-5xl sm:text-6xl font-bold uppercase tracking-widest transform -rotate-30 select-none w-full text-center">
+                <div className="text-slate-900/[0.015] text-5xl sm:text-6xl font-bold uppercase tracking-widest transform -rotate-30 select-none w-full text-center">
                   Ishteyaque Rahman
                 </div>
               </div>
@@ -261,7 +251,7 @@ export default function NotesViewer({ note }) {
       </div>
 
       {/* Related Academic Notes Sections (Takeaways & PYQs) (Strictly no emojis!) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="hidden">
         
         {/* Key Takeaways */}
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-xs">
@@ -287,7 +277,7 @@ export default function NotesViewer({ note }) {
             <span className="p-2 rounded-xl bg-purple-500/10 text-purple-700 shrink-0">
               <FileText className="h-4 w-4" weight="bold" />
             </span>
-            <span>UPSC PYQ Relevance</span>
+            <span>{examLabel} PYQ Relevance</span>
           </h3>
           <div className="space-y-4">
             {relatedPYQs.map((pyq, i) => (

@@ -120,7 +120,7 @@ export default function HeroSection() {
               className="relative w-full max-w-[520px] h-[400px] sm:h-[540px] flex items-center justify-center"
             >
               <Image
-                src="/hero-image.png"
+                src="/hero.webp"
                 alt="Focused UPSC student holding books"
                 width={1024}
                 height={1024}
@@ -134,7 +134,7 @@ export default function HeroSection() {
                   WebkitMaskRepeat: "no-repeat",
                   maskRepeat: "no-repeat",
                 }}
-                className="relative z-10 h-auto w-full origin-bottom scale-[1.15] sm:scale-[1.22]  object-contain mix-blend-multiply"
+                className="relative z-10 h-auto w-full origin-bottom scale-[1.15]   object-contain mix-blend-multiply"
               />
             </motion.div>
           </div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import NotesViewer from "../../components/NotesViewer";
+import AuthenticatedNotesViewer from "../../components/AuthenticatedNotesViewer";
 import NoteCard from "../../components/NoteCard";
 import CTASection from "../../components/CTASection";
 import { notes } from "../../data/notes";
@@ -11,7 +11,11 @@ import { CaretLeft, CaretRight, Stack, Clock } from "@phosphor-icons/react/dist/
 
 // Pre-generate routes for static exports
 export async function generateStaticParams() {
-  return notes.map((note) => ({
+  const activeNotes = notes.filter((note) => {
+    const isComingSoon = note.comingSoon;
+    return !isComingSoon;
+  });
+  return activeNotes.map((note) => ({
     noteId: note.id,
   }));
 }
@@ -27,10 +31,16 @@ export default async function NoteDetailPage({ params }) {
   }
 
   const note = notes[currentNoteIndex];
+  const isComingSoon = note.comingSoon;
+  if (isComingSoon) {
+    notFound();
+  }
 
-  // Calculate previous and next notes for navigation
-  const prevNote = currentNoteIndex > 0 ? notes[currentNoteIndex - 1] : null;
-  const nextNote = currentNoteIndex < notes.length - 1 ? notes[currentNoteIndex + 1] : null;
+  // Keep BPSC navigation within BPSC instead of crossing into UPSC notes.
+  const navigationNotes = note.category === "BPSC" ? notes.filter((item) => item.category === "BPSC") : notes.filter((item) => item.category !== "BPSC");
+  const navigationIndex = navigationNotes.findIndex((item) => item.id === note.id);
+  const prevNote = navigationIndex > 0 ? navigationNotes[navigationIndex - 1] : null;
+  const nextNote = navigationIndex < navigationNotes.length - 1 ? navigationNotes[navigationIndex + 1] : null;
 
   // Find related note items based on note.relatedNotes array of IDs
   const relatedNotes = notes.filter((n) => 
@@ -38,12 +48,14 @@ export default async function NoteDetailPage({ params }) {
     (n.subject === note.subject && n.id !== note.id)
   ).slice(0, 3);
 
-  const breadcrumbItems = [
-    { label: "Notes", href: "/notes" },
-    { label: note.category, href: `/notes?category=${encodeURIComponent(note.category)}` },
-    { label: note.subject, href: `/notes?category=${encodeURIComponent(note.category)}&subject=${encodeURIComponent(note.subject)}` },
-    { label: note.title }
-  ];
+  const breadcrumbItems = note.category === "BPSC"
+    ? [{ label: "BPSC", href: "/bpsc" }, { label: note.title }]
+    : [
+        { label: "Notes", href: "/notes" },
+        { label: note.category, href: `/notes?category=${encodeURIComponent(note.category)}` },
+        { label: note.subject, href: `/notes?category=${encodeURIComponent(note.category)}&subject=${encodeURIComponent(note.subject)}` },
+        { label: note.title },
+      ];
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-[#FBF9F4]">
@@ -57,9 +69,9 @@ export default async function NoteDetailPage({ params }) {
         <Breadcrumbs items={breadcrumbItems} />
 
         {/* Note Metadata Header Block */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] p-6 sm:p-10 space-y-4">
+        <div className="bg-white rounded-xl border border-slate-200/80   p-6 sm:p-10 space-y-4">
           <div className="flex flex-wrap items-center gap-2 text-xs">
-            <span className="px-2.5 py-1 rounded-full font-semibold bg-amber-500/10 text-amber-900 border border-amber-250/20 select-none">
+            <span className="px-2.5 py-1 rounded-full font-semibold bg-amber-500/10 text-amber-900 border border-amber-500/20 select-none">
               {note.category}
             </span>
             <span className="px-2.5 py-1 rounded-full font-semibold bg-slate-50 border border-slate-200/50 text-slate-600 select-none">
@@ -81,13 +93,13 @@ export default async function NoteDetailPage({ params }) {
             {note.title}
           </h1>
 
-          <p className="text-slate-655 text-sm sm:text-base font-sans font-light leading-relaxed max-w-3xl">
+          <p className="text-slate-600 text-sm sm:text-base font-sans font-light leading-relaxed max-w-3xl">
             {note.description}
           </p>
         </div>
 
         {/* Custom protected notes reader */}
-        <NotesViewer note={note} />
+        <AuthenticatedNotesViewer note={note} />
 
         {/* Navigation buttons: Previous vs Next */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-200 select-none">
@@ -112,7 +124,7 @@ export default async function NoteDetailPage({ params }) {
               className="w-full sm:w-auto flex items-center justify-between space-x-3 bg-white hover:bg-slate-50 border border-slate-200 hover:border-amber-300 px-5 py-3 rounded-2xl shadow-xs transition-all text-right group ml-auto active:scale-[0.98]"
             >
               <div>
-                <span className="block text-[10px] uppercase font-bold tracking-wider text-slate-405">Next Topic</span>
+                <span className="block text-[10px] uppercase font-bold tracking-wider text-slate-400">Next Topic</span>
                 <span className="font-serif text-sm font-bold text-slate-700 group-hover:text-amber-800 line-clamp-1">{nextNote.title}</span>
               </div>
               <CaretRight className="h-5 w-5 text-slate-400 group-hover:text-amber-700 transition-colors" weight="bold" />

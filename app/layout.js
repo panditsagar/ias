@@ -1,4 +1,5 @@
 import "./globals.css";
+import { AuthProvider } from "./context/AuthContext";
 
 export const metadata = {
   title: "Ishteyaque Rahman - Simple, Structured UPSC Notes",
@@ -16,7 +17,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#FBF9F4] text-slate-800 font-sans">
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

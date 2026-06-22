@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ClockCounterClockwise, ArrowUpRight } from "@phosphor-icons/react";
+import { ClockCounterClockwise } from "@phosphor-icons/react";
 
 export default function PYQCard({ paper, description, years = "2013 - 2025", type = "Mains" }) {
   // Color themes based on Prelims vs Mains vs Optional PYQs
@@ -17,10 +16,8 @@ export default function PYQCard({ paper, description, years = "2013 - 2025", typ
 
   return (
     <motion.div
-      whileHover={{ y: -3, scale: 1.005 }}
-      whileTap={{ scale: 0.995 }}
       transition={springTransition}
-      className="group bg-white rounded-2xl border border-slate-200/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] p-8 flex flex-col justify-between transition-colors duration-300 hover:border-amber-300/50"
+      className="group bg-white rounded-2xl border border-slate-200/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] p-8 flex flex-col justify-between cursor-default"
     >
       <div className="space-y-4">
         {/* Header Badges */}
@@ -35,8 +32,8 @@ export default function PYQCard({ paper, description, years = "2013 - 2025", typ
         </div>
 
         {/* Title */}
-        <div className="space-y-2">
-          <h3 className="font-serif text-lg sm:text-xl font-bold text-slate-805 group-hover:text-amber-805 transition-colors">
+        <div className="space-y-2 select-none">
+          <h3 className="font-serif text-lg sm:text-xl font-bold text-slate-800">
             {paper}
           </h3>
           <p className="text-slate-650 text-sm font-sans font-light leading-relaxed">
@@ -48,13 +45,9 @@ export default function PYQCard({ paper, description, years = "2013 - 2025", typ
       {/* Action Footer */}
       <div className="pt-6 mt-6 border-t border-slate-100/80 flex items-center justify-between">
         <span className="text-xs text-slate-400 font-sans select-none">Premium PYQ Analysis</span>
-        <Link
-          href={`/notes?category=${type === "Optional" ? "PSIR+Optional" : type}&q=PYQ`}
-          className="inline-flex items-center space-x-0.5 font-semibold text-amber-700 hover:text-amber-850 group-hover:underline active:scale-[0.98] transition-transform"
-        >
-          <span>View PYQ Notes</span>
-          <ArrowUpRight className="h-4 w-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" weight="bold" />
-        </Link>
+        <div className="inline-flex items-center space-x-0.5 font-semibold text-slate-400 select-none">
+          <span>Coming Soon</span>
+        </div>
       </div>
     </motion.div>
   );
