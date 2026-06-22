@@ -1,7 +1,16 @@
 import { ListObjectsV2Command } from "@aws-sdk/client-s3";
+import bpscData from "@/app/data/bpsc.json";
 import { ANSWER_COPY_PREFIX, BPSC_NOTES_PREFIX, getR2Client, getR2Config } from "@/lib/r2";
 
 export const dynamic = "force-dynamic";
+
+const resourceDescriptions = new Map(
+  [
+    ...bpscData.notes,
+    ...bpscData.copies.actual,
+    ...bpscData.copies.practice,
+  ].map((resource) => [resource.objectKey, resource.description]),
+);
 
 function displayTitle(fileName, stripUnchecked = false) {
   return fileName
@@ -18,6 +27,7 @@ function toResource(object, prefix, kind) {
   return {
     id: Buffer.from(object.Key).toString("base64url"),
     title: displayTitle(fileName, kind === "real"),
+    description: resourceDescriptions.get(object.Key) || "",
     fileName,
     kind,
     size: object.Size || 0,

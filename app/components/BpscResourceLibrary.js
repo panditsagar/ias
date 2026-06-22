@@ -16,7 +16,7 @@ function ResourceCard({ resource, onOpen }) {
     real: "bg-emerald-50 text-emerald-700",
     practice: "bg-blue-50 text-blue-700",
   };
-  const labels = { note: "Study note", real: "Actual paper", practice: "Practice copy" };
+  const labels = { note: "Study notes", real: "Actual paper", practice: "Practice copy" };
 
   return (
     <article className="flex flex-col justify-between rounded-2xl border border-slate-200/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-amber-300/60 hover:shadow-lg">
@@ -26,6 +26,7 @@ function ResourceCard({ resource, onOpen }) {
           <span className="text-xs text-slate-400">{formatSize(resource.size)}</span>
         </div>
         <h3 className="mt-4 text-lg font-bold text-slate-900">{resource.title}</h3>
+        {resource.description && <p className="mt-2 text-sm leading-6 text-slate-500">{resource.description}</p>}
       </div>
       <button type="button" onClick={() => onOpen(resource)} className="mt-6 flex cursor-pointer items-center justify-between border-t border-slate-100 pt-4 text-sm font-semibold text-amber-700 hover:text-amber-900"><span>Open PDF</span><ArrowRight className="h-4 w-4" weight="bold" /></button>
     </article>

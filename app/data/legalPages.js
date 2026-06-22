@@ -1,8 +1,8 @@
 export const legalPages = {
   privacyPolicy: `1. Privacy Policy
-Effective Date: [Insert Date, e.g., June 22, 2026]
+Effective Date: June 22, 2026
 Introduction
-Welcome to [Insert Website URL] (the "Website"). The Website is entirely owned, operated, and managed by Triple Hash ("Company", "We", "Us", or "Our"). We are committed to protecting your privacy and ensuring your personal data is handled securely. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our platform or make use of our services.
+Welcome to ishteyaquerahman.in. The Website is entirely owned, operated, and managed by Triple Hash ("Company", "We", "Us", or "Our"). We are committed to protecting your privacy and ensuring your personal data is handled securely. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our platform or make use of our services.
 Information We Collect
 Personal Data: When you register, subscribe, contact us, or make a payment, we may collect personally identifiable information such as your name, email address, phone number, and billing address.
 Payment Information: All monetary transactions are processed securely through integrated third-party payment gateways. Triple Hash does not store your credit card, debit card, or banking credentials on its servers.
@@ -17,7 +17,7 @@ Data Security
 We implement robust administrative, technical, and physical security measures to protect your personal information. However, no electronic transmission over the internet can be guaranteed 100% secure.`,
 
   termsAndConditions: `2. Terms and Conditions
-Effective Date: [Insert Date]
+Effective Date: june 2026
 Agreement to Terms
 By accessing or using this Website, you agree to be bound by these Terms and Conditions. If you do not agree, please refrain from using the platform.
 Ownership of Intellectual Property & Content
@@ -46,5 +46,5 @@ If the Website introduces a recurring subscription model in the future:
 Users can cancel their renewal subscription at any time through their account dashboard.
 Upon cancellation, your access will remain active until the end of the current paid billing cycle. No pro-rata refunds will be provided for unused days in a billing cycle.
 Transaction Failures
-In the event that money is deducted from your account but access is not granted due to a technical glitch or payment gateway failure, please contact Triple Hash at [Insert Support Email] with transaction receipts. We will verify the transaction with the payment gateway partner and resolve the issue within [e.g., 5-7 working days].`,
+In the event that money is deducted from your account but access is not granted due to a technical glitch or payment gateway failure, please contact Triple Hash at connect@triplehash.in with transaction receipts. We will verify the transaction with the payment gateway partner and resolve the issue within 5 days.`,
 };

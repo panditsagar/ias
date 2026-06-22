@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext";
 
 const subscribe = () => () => {};
 
-export default function GoogleAuthModal({ open, onClose, onSuccess, message = "Your study note, ready." }) {
+export default function GoogleAuthModal({ open, onClose, onSuccess, message = "Your study notes, ready." }) {
   const { error, signInWithGoogle } = useAuth();
   const isClient = useSyncExternalStore(subscribe, () => true, () => false);
 

@@ -1,25 +1,25 @@
 {
   "notes": [
-    { "title": "Mains Important Themes", "fileName": "Mains important themes.pdf", "objectKey": "bpsc/notes/Mains important themes.pdf", "kind": "note" },
-    { "title": "Ancient BPSC", "fileName": "ancient bpsc.pdf", "objectKey": "bpsc/notes/ancient bpsc.pdf", "kind": "note" },
-    { "title": "Bihar Interview Notes", "fileName": "bihar interview notes.pdf", "objectKey": "bpsc/notes/bihar interview notes.pdf", "kind": "note" },
-    { "title": "Economy BPSC", "fileName": "eco bpsc.pdf", "objectKey": "bpsc/notes/eco bpsc.pdf", "kind": "note" },
-    { "title": "Geography BPSC", "fileName": "geo bpsc.pdf", "objectKey": "bpsc/notes/geo bpsc.pdf", "kind": "note" },
-    { "title": "Medieval BPSC", "fileName": "medieval bpsc.pdf", "objectKey": "bpsc/notes/medieval bpsc.pdf", "kind": "note" },
-    { "title": "Modern BPSC", "fileName": "modern bpsc.pdf", "objectKey": "bpsc/notes/modern bpsc.pdf", "kind": "note" }
+    { "title": "Mains Important Themes", "description": "This document contains important thematic questions asked in BPSC Mains, along with comprehensive solutions.", "fileName": "Mains important themes.pdf", "objectKey": "bpsc/notes/Mains important themes.pdf", "kind": "note" },
+    { "title": "Ancient BPSC", "description": "This PDF condenses Bihar's ancient history, from the Paleolithic Age to the Gupta Empire, for the Prelims and Mains syllabi.", "fileName": "ancient bpsc.pdf", "objectKey": "bpsc/notes/ancient bpsc.pdf", "kind": "note" },
+    { "title": "Bihar Interview Notes", "description": "This document was prepared for the interview stage and covers recent facts, figures, schemes, initiatives, and other miscellaneous topics.", "fileName": "bihar interview notes.pdf", "objectKey": "bpsc/notes/bihar interview notes.pdf", "kind": "note" },
+    { "title": "Economy BPSC", "description": "This document provides an overview of Bihar's economic profile. Update the data and figures when preparing for the examination.", "fileName": "eco bpsc.pdf", "objectKey": "bpsc/notes/eco bpsc.pdf", "kind": "note" },
+    { "title": "Geography BPSC", "description": "This short PDF covers Bihar-specific geographical features, including landforms, minerals, and soils, relevant to the Prelims and Mains syllabi.", "fileName": "geo bpsc.pdf", "objectKey": "bpsc/notes/geo bpsc.pdf", "kind": "note" },
+    { "title": "Medieval BPSC", "description": "This three-page document covers the important medieval dynasties that ruled Bihar.", "fileName": "medieval bpsc.pdf", "objectKey": "bpsc/notes/medieval bpsc.pdf", "kind": "note" },
+    { "title": "Modern BPSC", "description": "This document comprehensively covers modern history events, personalities, associations, and literature associated with Bihar that are relevant to the examination.", "fileName": "modern bpsc.pdf", "objectKey": "bpsc/notes/modern bpsc.pdf", "kind": "note" }
   ],
   "copies": {
     "actual": [
-      { "title": "Essay", "fileName": "Essay unchecked.pdf", "objectKey": "bpsc/answer_copy/Essay unchecked.pdf", "kind": "real" },
-      { "title": "GS 1", "fileName": "Gs 1 unchecked.pdf", "objectKey": "bpsc/answer_copy/Gs 1 unchecked.pdf", "kind": "real" },
-      { "title": "GS 2", "fileName": "Gs 2 unchecked.pdf", "objectKey": "bpsc/answer_copy/Gs 2 unchecked.pdf", "kind": "real" }
+      { "title": "Essay", "description": "This is the actual Essay examination-day answer copy issued by the commission for the 70th BPSC Mains examination.", "fileName": "Essay unchecked.pdf", "objectKey": "bpsc/answer_copy/Essay unchecked.pdf", "kind": "real" },
+      { "title": "GS 1", "description": "This is the actual GS 1 examination-day answer copy issued by the commission for the 70th BPSC Mains examination.", "fileName": "Gs 1 unchecked.pdf", "objectKey": "bpsc/answer_copy/Gs 1 unchecked.pdf", "kind": "real" },
+      { "title": "GS 2", "description": "This is the actual GS 2 examination-day answer copy issued by the commission for the 70th BPSC Mains examination.", "fileName": "Gs 2 unchecked.pdf", "objectKey": "bpsc/answer_copy/Gs 2 unchecked.pdf", "kind": "real" }
     ],
     "practice": [
-      { "title": "Essay", "fileName": "Essay.pdf", "objectKey": "bpsc/answer_copy/Essay.pdf", "kind": "practice" },
-      { "title": "GS 1 Set 1", "fileName": "Gs 1 set 1.pdf", "objectKey": "bpsc/answer_copy/Gs 1 set 1.pdf", "kind": "practice" },
-      { "title": "GS 1 Set 2", "fileName": "Gs 1 set 2.pdf", "objectKey": "bpsc/answer_copy/Gs 1 set 2.pdf", "kind": "practice" },
-      { "title": "GS 2 Set 1", "fileName": "Gs 2 set 1.pdf", "objectKey": "bpsc/answer_copy/Gs 2 set 1.pdf", "kind": "practice" },
-      { "title": "GS 2 Set 2", "fileName": "Gs 2 set 2.pdf", "objectKey": "bpsc/answer_copy/Gs 2 set 2.pdf", "kind": "practice" }
+      { "title": "Essay", "description": "This document contains three practice essays written according to the Mains syllabus pattern one week before the examination.", "fileName": "Essay.pdf", "objectKey": "bpsc/answer_copy/Essay.pdf", "kind": "practice" },
+      { "title": "GS 1 Set 1", "description": "This is a full-length GS 1 practice test written one week before the examination. The question paper could not be located, so use the answer copy as a guide for structure and presentation.", "fileName": "Gs 1 set 1.pdf", "objectKey": "bpsc/answer_copy/Gs 1 set 1.pdf", "kind": "practice" },
+      { "title": "GS 1 Set 2", "description": "This is a full-length GS 1 practice test written one week before the examination. The question paper could not be located, so use the answer copy as a guide for structure and presentation.", "fileName": "Gs 1 set 2.pdf", "objectKey": "bpsc/answer_copy/Gs 1 set 2.pdf", "kind": "practice" },
+      { "title": "GS 2 Set 1", "description": "This is a full-length GS 2 practice test written one week before the examination. The question paper could not be located, so use the answer copy as a guide for structure and presentation.", "fileName": "Gs 2 set 1.pdf", "objectKey": "bpsc/answer_copy/Gs 2 set 1.pdf", "kind": "practice" },
+      { "title": "GS 2 Set 2", "description": "This is a full-length GS 2 practice test written one week before the examination. The question paper could not be located, so use the answer copy as a guide for structure and presentation.", "fileName": "Gs 2 set 2.pdf", "objectKey": "bpsc/answer_copy/Gs 2 set 2.pdf", "kind": "practice" }
     ]
   }
 }
